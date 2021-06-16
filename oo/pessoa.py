@@ -17,9 +17,15 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - olhos {cls.olhos}'
 
+class Homem(Pessoa):
+    pass
+
+class Mutante(Pessoa):
+    olhos = 3
+
 if __name__ == '__main__':
     vinicios = Pessoa(nome='Vinicios')
-    vitoria = Pessoa(vinicios, nome='Vitoria')
+    vitoria = Mutante(vinicios, nome='Vitoria')
     print(Pessoa.cumprimentar(vitoria))
     print(id(vitoria))
     print(vitoria.cumprimentar())
@@ -34,10 +40,15 @@ if __name__ == '__main__':
     print(vitoria.sobrenome)
     print(vitoria.__dict__)
     print(vinicios.__dict__)
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(vitoria.olhos)
     print(vinicios.olhos)
     print(id(Pessoa.olhos), id(vitoria.olhos), id(vinicios.olhos))
     print(Pessoa.metodo_estatico(), vitoria.metodo_estatico(), vinicios.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), vitoria.nome_e_atributos_de_classe(), vinicios.nome_e_atributos_de_classe())
+    pessoa = Pessoa('Anonimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(vitoria, Pessoa))
+    print(isinstance(vitoria, Homem))
+    print(vitoria.olhos)
